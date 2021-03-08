@@ -16,4 +16,13 @@ public class OrderItem {
         return prod.getPrice() * quantity;
     }
 
+    public void checkStock() throws NotEnoughStockException{
+        if (this.quantity <= prod.getQuantity()) {
+            prod.quantityAfterBuy(quantity);
+        }
+        else {
+            throw new NotEnoughStockException("product not enough!");
+        }
+    }
+
 }
